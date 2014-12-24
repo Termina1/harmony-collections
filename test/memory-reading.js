@@ -22,7 +22,7 @@ function formatSize(s){
 
 function MemoryReading(name, time){
   var reading = process.memoryUsage();
-  this.timing = process.hrtime(time);
+  this.timing = process.hrtime();
   this.name = name;
   this.time = process.hrtime(zero)[1];
   this.rss = reading.rss;

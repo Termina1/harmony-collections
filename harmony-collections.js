@@ -573,8 +573,9 @@ void function(string_, object_, function_, prototype_, toString_,
   // ###########
 
   // if a fully implemented Map exists then use it
-  if ('Map' in global && 'forEach' in global.Map.prototype) {
-    M = exports.Map = global.Map;
+  if ('Map' in global && 'forEach' in global.Map.prototype &&
+    !Object.getOwnPropertyDescriptor(Map.prototype, 'size').get) {
+      M = exports.Map = global.Map;
   } else {
     M = exporter('Map', function(wrap, unwrap){
       // attempt to use an existing partially implemented Map
